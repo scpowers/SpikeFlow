@@ -36,7 +36,4 @@ class data_handler:
         print('images_ts shape: ', self.image_ts.shape)
         print('images_event_inds shape: ', self.image_raw_event_inds)
 
-        print('sample raw image: \n', self.images[32,:,:])
-
-
 
