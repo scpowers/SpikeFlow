@@ -7,11 +7,10 @@ from tensorflow import keras
 from data_handler import *
 from vis_helpers import *
 
-print('\n\n\n')
 ################ Parameters  ################
 # data sources
-train_data_filename = 'outdoor_day2_data.hdf5'
-test_data_filename = 'indoor_flying2_data.hdf5'
+train_data_filename = 'outdoor_day1'
+test_data_filename = 'indoor_flying2'
 
 # encoding parameters
 N = 5 # number of event frames per before/after group
@@ -30,7 +29,18 @@ eta = 0.001
 V_t = 0.75 # IF neuron threshold voltage
 
 ################ Implementation  ################
-train_data = data_handler(train_data_filename, 'train')
+train_data = data_handler(train_data_filename, N)
+
+# explore data
+print('\n\nnormalized time stamps for first 10 GS images:\n ', 
+        train_data.image_ts_norm[0:10])
+print('time between first 10 GS images:\n',
+        np.diff(train_data.image_ts[0:10] - train_data.image_ts[0]))
+print('nearest event to first GS image: ', 
+        train_data.image_raw_event_inds[0])
+print('nearest event to second GS image: ', 
+        train_data.image_raw_event_inds[1])
+print('sample event:\n', train_data.events[4,:])
 
 # test event visualization
 #vis_events_timeslice(train_data, 0, 1000)
