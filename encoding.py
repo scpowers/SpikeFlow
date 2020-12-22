@@ -59,10 +59,15 @@ def encode_inputs(data, N):
         #print('t_mid: ', t_mid)
         
         # determine time interval between event frames
-        dt = (t_end - t_start) / (2*N + 1)
+        dt = (t_end - t_start) / (2*N)
 
-        frame_times[i,:] = np.arange(t_start+dt, t_end-dt, dt)
+        frame_times[i,:] = np.arange(t_start+dt, t_end+dt, dt)
         print('frame times: ', frame_times[i,:])
+        print('array start time: ', frame_times[i,0])
+        print('start time: ', t_start)
+        print('array end time: ', frame_times[i,-1])
+        print('end time: ', t_end)
+        print('dt: ', dt)
 
         num_grouped = 0
 
