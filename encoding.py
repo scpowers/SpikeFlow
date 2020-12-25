@@ -25,16 +25,16 @@ def encode_inputs(data, N):
     latter_OFF = np.zeros((data.num_images - 1, N, data.im_width, 
         data.im_height))
     '''
-    former_ON = np.zeros((1, N, data.im_width, data.im_height))
-    former_OFF = np.zeros((1, N, data.im_width, data.im_height))
-    latter_ON = np.zeros((1, N, data.im_width, data.im_height))
-    latter_OFF = np.zeros((1, N, data.im_width, data.im_height))
-    # holds event frame times for each image
-    frame_times = np.zeros((1, 2*N)) 
+    former_ON = np.zeros((5, N, data.im_width, data.im_height))
+    former_OFF = np.zeros((5, N, data.im_width, data.im_height))
+    latter_ON = np.zeros((5, N, data.im_width, data.im_height))
+    latter_OFF = np.zeros((5, N, data.im_width, data.im_height))
+    # holds event frame times for each frame
+    frame_times = np.zeros((5, 2*N)) 
 
     # splits are largely governed by number of GS images
     #for i in range(data.num_images-1):
-    for i in range(1): # only encode first 6 images
+    for i in range(5): # only encode first 6 images
         # if first image, no corresponding nearest event
         if i == 0:
             event_i_start = 0
@@ -61,7 +61,7 @@ def encode_inputs(data, N):
         # determine time interval between event frames
         dt = (t_end - t_start) / (2*N)
 
-        frame_times[i,:] = np.arange(t_start+dt, t_end+dt, dt)
+        frame_times[i,:] = np.linspace(t_start+dt, t_end, 2*N)
         print('frame times: ', frame_times[i,:])
         print('array start time: ', frame_times[i,0])
         print('start time: ', t_start)
