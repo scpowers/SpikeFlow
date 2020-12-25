@@ -107,7 +107,8 @@ def encode_inputs(data, N):
                         # still only update if an event wasn't already here
                         if latter_OFF[i,n,x,y] != 1:
                             latter_OFF[i,n,x,y] = 1
-        print('% grouped: ', num_grouped/len(events) * 100)
+        print('% grouped between images ', i, '-', i+1, ': ', 
+                num_grouped/len(events) * 100)
 
 
     # now save arrays containing event frames
