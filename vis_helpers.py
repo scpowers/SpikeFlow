@@ -50,11 +50,8 @@ def vis_event_frames(network_input, frame_times, start_ind):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     ax.set_box_aspect((5, 1, 1))
+    colors = ['red', 'blue', 'green', 'black']
     for i in range(4): # loop over the four channels
-        if i % 2 == 0:
-            color = 'red'
-        else:
-            color = 'blue'
 
         data = network_input[i,start_ind,:,:,:]
         N = data.shape[0]
@@ -67,7 +64,7 @@ def vis_event_frames(network_input, frame_times, start_ind):
             for x in range(data.shape[1]):
                 for y in range(data.shape[2]):
                     if data[j,x,y] == 1:
-                        ax.scatter3D(time,x,y,color=color)
+                        ax.scatter3D(time,x,y,color=colors[i])
 
     ax.set_xlabel('time')
     ax.set_ylabel('x')
