@@ -47,7 +47,7 @@ def encode_inputs(data, N):
 
         # now have slice of events to consider
         events = data.events[event_i_start:event_i_end+1, :]
-        print('len of events: ', len(events))
+        #print('len of events: ', len(events))
         #t_start = data.events[event_i_start, 2]
         t_start = data.image_ts[i]
         #print('t_start: ', t_start)
@@ -62,12 +62,14 @@ def encode_inputs(data, N):
         dt = (t_end - t_start) / (2*N)
 
         frame_times[i,:] = np.linspace(t_start+dt, t_end, 2*N)
+        '''
         print('frame times: ', frame_times[i,:])
         print('array start time: ', frame_times[i,0])
         print('start time: ', t_start)
         print('array end time: ', frame_times[i,-1])
         print('end time: ', t_end)
         print('dt: ', dt)
+        '''
 
         num_grouped = 0
 
