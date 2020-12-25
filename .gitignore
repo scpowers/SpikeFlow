@@ -1,0 +1,4 @@
+.DS_Store
+*.npy
+/__pycache__
+*.hdf5
